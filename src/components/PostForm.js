@@ -1,18 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { createPost } from '../services/postService';
+import { createPost, updatePost } from '../services/postService';
 
-export default function PostForm({ posts, setPosts }) {
+export default function PostForm({
+  posts,
+  setPosts,
+  editingPost,
+  setEditingPost,
+}) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
+  useEffect(() => {
+    if (editingPost) {
+      setTitle(editingPost.title);
+      setBody(editingPost.body);
+    } else {
+      setTitle('');
+      setBody('');
+    }
+  }, [editingPost]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && body) {
-      addPost();
+
+    if (editingPost) {
+      if (title && body) {
+        editPost();
+      }
+    } else {
+      if (title && body) {
+        addPost();
+      }
     }
+
     setTitle('');
     setBody('');
+    setEditingPost(null);
   };
 
   const addPost = () => {
@@ -23,6 +47,22 @@ export default function PostForm({ posts, setPosts }) {
     createPost(post)
       .then((res) => {
         setPosts([...posts, res.data]);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const editPost = () => {
+    const post = {
+      title,
+      body,
+    };
+    updatePost(editingPost.id, post)
+      .then((res) => {
+        setPosts(
+          posts.map((post) =>
+            post.id === editingPost.id ? res.data : post
+          )
+        );
       })
       .catch((err) => console.error(err));
   };
@@ -48,7 +88,9 @@ export default function PostForm({ posts, setPosts }) {
         ></textarea>
 
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">
+            {editingPost ? 'Edit Post' : 'Add Post'}
+          </button>
         </div>
       </form>
     </div>
