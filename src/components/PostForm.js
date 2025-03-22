@@ -22,7 +22,7 @@ export default function PostForm({ posts, setPosts }) {
     };
     createPost(post)
       .then((res) => {
-        setPosts([...posts, post]);
+        setPosts([...posts, res.data]);
       })
       .catch((err) => console.error(err));
   };
