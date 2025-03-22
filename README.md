@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Posts App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React application that demonstrates basic CRUD (Create, Read, Update, Delete) functionality for posts using the JSONPlaceholder API.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [File Structure](#file-structure)
+- [Technologies Used](#technologies-used)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The **Posts App** is a lightweight application built with React. It fetches posts from a REST API (JSONPlaceholder) and allows you to add new posts, edit existing ones, and delete posts. The app is structured with a main component that renders a list of posts and a form component to handle the creation and editing of posts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Main component:** [App.js](./App.js)
+- **Posts listing and management:** [Posts.js](./components/Posts.js)
+- **Post form:** [PostForm.js](./components/PostForm.js)
+- **API Service:** [postService.js](./services/postService.js)
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **View Posts:** Display a list of posts retrieved from the API.
+- **Add Post:** Create a new post with a title and content.
+- **Edit Post:** Update an existing post.
+- **Delete Post:** Remove a post from the list.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the **Posts App** locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+ git clone https://github.com/jeffgrahamcodes/react-api-demo.git
+ cd react-api-demo
+```
 
-### `npm run eject`
+2. **Install dependencies:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+ npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the development server:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+ npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **View Posts:** When you open the app, it automatically fetches and displays a list of posts.
+- **Add Post:** Use the form at the top of the page to add a new post. Enter a title and content, then click **Add Post**.
+- **Edit Post:** Click the **Edit** button next to any post to load its data into the form, make changes, and submit.
+- **Delete Post:** Click the **Delete** button to remove a post from the list.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## File Structure
 
-### Code Splitting
+    ├── src
+    │   ├── components
+    │   │   ├── Posts.js         # Lists posts and handles edit/delete actions
+    │   │   └── PostForm.js      # Form component for adding/editing posts
+    │   ├── services
+    │   │   └── postService.js   # API calls using axios
+    │   ├── App.js               # Root component that renders the Posts component
+    │   └── App.css              # Styling for the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
 
-### Analyzing the Bundle Size
+- **React:** JavaScript library for building user interfaces.
+- **Axios:** HTTP client for making API requests.
+- **JSONPlaceholder:** Free REST API used for testing and prototyping.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Endpoints
 
-### Making a Progressive Web App
+The application uses the following endpoints provided by JSONPlaceholder:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **GET /posts:** Retrieve a list of posts.
+- **POST /posts:** Create a new post.
+- **PUT /posts/{id}:** Update an existing post.
+- **DELETE /posts/{id}:** Delete a post.
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributions are welcome! If you want to improve the app or add new features, follow these steps:
 
-### Deployment
+1. Fork the repository.
+2. Create a new branch (e.g., `feature/new-feature`).
+3. Make your changes and commit them.
+4. Push your branch to your fork.
+5. Open a Pull Request detailing your changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
